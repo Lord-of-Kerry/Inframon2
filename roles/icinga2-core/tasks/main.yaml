@@ -1,0 +1,52 @@
+- name: install the latest version of icinga2
+  package:
+    name: icinga2
+    state: latest
+
+- name: install the latest version of icinga plugins
+  package:
+    name: nagios-plugins
+    state: latest
+
+- name: install icinga2-classicui
+  package:
+    name: icinga2-classicui
+    state: latest
+
+- name: Install icinga2-classicui nginx site
+  template:
+    src: icinga2-classicui.j2
+    dest: /etc/nginx/sites-available/icinga2-classicui
+
+- name: Make sure we can use htpasswd module
+  package:
+    name: python-passlib
+    state: latest
+
+- htpasswd:
+    path: /etc/icinga2/classicui/htpasswd.users
+    name: icingaadmin
+    password: "{{ icingaadminpw }}"
+
+- name: install fcgiwrap
+  package:
+    name: fcgiwrap
+    state: latest
+
+
+
+#- name: install mysql server
+#  package:
+#    name: mysql-server
+#    state: latest
+#
+#- name: install mysql client                 
+#  package:
+#    name: mysql-client
+#    state: latest
+#
+#- name: install icinga2-ido-mysql
+#  package:
+#    name: icinga2-ido-mysql
+#    state: latest
+
