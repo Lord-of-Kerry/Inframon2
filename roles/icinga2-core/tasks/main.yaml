@@ -34,6 +34,9 @@
     state: latest
 
 
+- name: Configure gateways
+  template: "src=gateways.conf.j2 dest='/etc/icinga2/conf.d/hosts/gateways.conf' owner=root group=root"
+
 
 #- name: install mysql server
 #  package:
