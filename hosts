@@ -5,3 +5,5 @@ karte                   ansible_ssh_host=138.201.172.77
 [gateways]
 gw03			ansible_ssh_host=176.9.38.150
 gw04			ansible_ssh_host=213.133.111.130
+[satellites]
+icsat01-01		ansible_ssh_host=10.1.160.24

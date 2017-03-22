@@ -8,6 +8,11 @@
     name: nagios-plugins
     state: latest
 
+- name: install the latest version of nagios-nrpe-plugin
+  package:
+    name: nagios-nrpe-plugin
+    state: latest
+
 - name: install icinga2-classicui
   package:
     name: icinga2-classicui
@@ -53,3 +58,8 @@
 #    name: icinga2-ido-mysql
 #    state: latest
 
+
+- name: restart Icinga2
+  service:
+    name: icinga2
+    state: restarted

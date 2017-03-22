@@ -1,0 +1,12 @@
+---
+- hosts: services
+  roles:
+    - icinga2-core
+- hosts: gateways
+  roles:
+    - icinga2-nrpe
+
+- hosts: satellites
+  roles:
+    - icinga2-nrpe
+

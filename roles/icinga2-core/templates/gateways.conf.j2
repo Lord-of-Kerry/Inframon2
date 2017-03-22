@@ -8,5 +8,130 @@ object Host "{{ item }}" {
   check_command = "hostalive"
 }
 
+object Service "CPU load" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_load"
+}
+
+object Service "RAM" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_ram"
+}
+
+object Service "zombie procs" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_zombie_procs"
+}
+
+object Service "Total Procs" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_total_procs"
+}
+
+object Service "active DHCP leases" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_active_leases"
+}
+
+object Service "Disk" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_disk"
+}
+
+object Service "Updates" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_update"
+}
+
+object Service "Bird v4" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_bird"
+}
+
+object Service "Bird v6" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_bird6"
+}
+
+object Service "Tunneldigger" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_tunneldigger"
+}
+
+object Service "DHCP-Server" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_dhcp-server"
+}
+
+object Service "DNSv4 vs. ipv4.google.com" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check-dns4-client"
+}
+
+object Service "DNSv6 vs. ipv6.google.com" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check-dns6-client"
+}
+
+object Service "HTTPv4 vs. ipv4.google.com" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check-http4-client"
+}
+
+object Service "HTTPv6 vs. ipv6.google.com" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check-http6-client"
+}
+
+object Service "v4 Ping vs. google.de" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check-ping-v4"
+}
+
+object Service "v6 Ping vs. google.de" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check-ping-v6"
+}
+
+object Service "current bandwidth" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_bandwidth"
+}
 
 {% endfor %}

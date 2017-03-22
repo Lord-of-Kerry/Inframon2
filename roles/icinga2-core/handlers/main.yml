@@ -1,0 +1,12 @@
+---
+- name: Start Icinga
+  service: name=icinga2 state=started
+
+- name: Stop Icinga
+  service: name=icinga2 state=stopped
+
+- name: Reload Icinga
+  service: name=icinga2 state=reloaded
+
+- name: Restart Icinga
+  service: name=icinga2 state=restarted
