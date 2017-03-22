@@ -2,6 +2,12 @@
 - hosts: services
   roles:
     - icinga2-core
+    - icinga2-nrpe
+
+- hosts: mapserver
+  roles:
+    - icinga2-nrpe
+
 - hosts: gateways
   roles:
     - icinga2-nrpe

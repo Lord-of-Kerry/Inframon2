@@ -55,7 +55,11 @@
 - name: Configure satellites
   template: "src=satellites.conf.j2 dest='/etc/icinga2/conf.d/hosts/satellites.conf' owner=root group=root"
 
+- name: Configure services
+  template: "src=services.conf.j2 dest='/etc/icinga2/conf.d/hosts/services.conf' owner=root group=root"
 
+- name: Configure mapserver
+  template: "src=mapserver.conf.j2 dest='/etc/icinga2/conf.d/hosts/mapserver.conf' owner=root group=root"
 
 #- name: install mysql server
 #  package:
