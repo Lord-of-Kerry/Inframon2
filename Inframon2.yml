@@ -3,6 +3,7 @@
   roles:
     - icinga2-core
     - icinga2-nrpe
+    - email-ssmtp
 
 - hosts: mapserver
   roles:

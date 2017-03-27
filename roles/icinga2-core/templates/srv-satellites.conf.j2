@@ -100,5 +100,14 @@ object Service "v6 Ping vs. google.de" {
   vars.nrpe_command = "check-ping-v6"
 }
 
+object Service "Speedtest" {
+  import "generic-service"
+  host_name = "{{ item }}"
+  check_command = "nrpe"
+  vars.nrpe_command = "check_speedtest-cli-2"
+  vars.nrpe_timeout = "60"
+  check_interval = 1h
+}
+
 
 {% endfor %}

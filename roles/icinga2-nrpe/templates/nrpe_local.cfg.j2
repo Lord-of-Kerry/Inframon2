@@ -4,7 +4,7 @@
 connection_timeout=600
 command_timeout=600
 
-allowed_hosts=127.0.0.1,{{ ansible_eth0.ipv4.address }},{{ hostvars[groups['services'][0]]['ansible_ssh_host'] }}
+allowed_hosts=127.0.0.1,{{ ansible_eth0.ipv4.address }},{{ hostvars[groups['services'][0]]['ansible_ssh_host'] }},{{ hostvars[groups['services'][0]]['ansible_all_ipv4_addresses'] | list | join(",") }}
 
 # Speedtest
 command[check_speedtest-cli-2]=/usr/lib/nagios/plugins/check_speedtest-cli.sh -w 2 -c 1 -W 0.2 -C 0.1 -p -s 4193
@@ -35,8 +35,8 @@ command[check-dns4-client]=/usr/lib/nagios/plugins/check_dns -H ipv4.google.com 
 command[check-dns6-client]=/usr/lib/nagios/plugins/check_dns -H ipv6.google.com -w 2 -c 3
 command[check-http4-client]=/usr/lib/nagios/plugins/check_http -H ipv4.google.com -4 -w 2 -c 3
 command[check-http6-client]=/usr/lib/nagios/plugins/check_http -H ipv6.google.com -6 -w 2 -c 3
-command[check-ping-v4]=/usr/lib/nagios/plugins/check_ping -H google.de -w 30,3% -c 40,7% -4 -p10
-command[check-ping-v6]=/usr/lib/nagios/plugins/check_ping -H google.de -w 30,3% -c 40,7% -6 -p10
+command[check-ping-v4]=/usr/lib/nagios/plugins/check_ping -H google.de -w 50,3% -c 70,7% -4 -p10
+command[check-ping-v6]=/usr/lib/nagios/plugins/check_ping -H google.de -w 50,3% -c 70,7% -6 -p10
  
 # Service VM Server
 command[check_nginx]=/usr/lib/nagios/plugins/check_procs -c 1: -w 1: -C nginx
