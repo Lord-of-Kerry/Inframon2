@@ -1,0 +1,12 @@
+---
+
+- name: Install ssmtp
+  package:
+    name: ssmtp
+    state: installed
+
+- name: configuring ssmtp
+  template: src=ssmtp.conf.j2 dest=/etc/ssmtp/ssmtp.conf owner=root group=root
+
+- name: configuring ssmtp aliases
+  template: src=revaliases.j2 dest=/etc/ssmtp/revaliases owner=root group=root

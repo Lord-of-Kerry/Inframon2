@@ -1,1 +1,23 @@
+
+
 icingaadminpw: 1i1ngaadm1n
+
+icinga_admincontacts:
+ - "marcus.schuel@freie-infrastruktur.de"
+ - "monitoring@freie-infrastruktur.de"
+
+email_address: monitoring@freie-infrastruktur.de
+email_AuthUser: monitoring@freie-infrastruktur.de
+email_pw: XXXXXXXXXXXXXXXX
+email_srv: ha01s006-cl.org-dns.com:587
+email_rewriteDomain: server.freie-infrastruktur.de
+email_UseSTARTTLS: YES
+email_UseTLS: YES
+
+
+
+freifunk: 
+  name: "Freifunk Bergstrasse"
+  kurzname: "ffhp"
+  email: info@freifunk-bergstrasse.de
+  domain: freifunk-bergstrasse.de

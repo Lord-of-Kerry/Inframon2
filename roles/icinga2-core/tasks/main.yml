@@ -88,6 +88,11 @@
 - name: Configure users
   template: "src=users.conf.j2 dest='/etc/icinga2/conf.d/users.conf' owner=root group=root"
 
+#- name: generate Icinga contacts
+#  template: "src=contacts.conf.j2 dest=/etc/icinga2/conf.d/contacts.conf' owner=root group=root"
+#  when: icinga_admincontacts is defined
+
+
 
 #- name: install mysql server
 #  package:

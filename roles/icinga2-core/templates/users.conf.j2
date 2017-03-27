@@ -1,17 +1,22 @@
-/**
- * The example user 'icingaadmin' and the example
- * group 'icingaadmins'.
- */
+# {{ ansible_managed }}
 
 object User "icingaadmin" {
   import "generic-user"
-
   display_name = "Icinga 2 Admin"
   groups = [ "icingaadmins" ]
-
   email = "root@localhost"
 }
 
 object UserGroup "icingaadmins" {
   display_name = "Icinga 2 Admin Group"
 }
+
+# {{ ansible_managed }}
+{% for item in icinga_admincontacts %}
+object User "{{ item }}" {
+  import "generic-user"
+  display_name = "{{ item }}"
+  groups = [ "icingaadmins" ]
+  email = "{{ item }}"
+}
+{% endfor %}

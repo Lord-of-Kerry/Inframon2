@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+# Config file for sSMTP sendmail
+
+root={{ email_address }}
+mailhub={{ email_srv }}
+rewriteDomain={{ email_rewriteDomain }}
+hostname={{ email_rewriteDomain }}
+FromLineOverride=no
+UseSTARTTLS={{ email_UseSTARTTLS }}
+UseTLS={{ email_UseTLS }}
+AuthUser={{ email_AuthUser }}
+AuthPass={{ email_pw }}
+AuthMethod=LOGIN

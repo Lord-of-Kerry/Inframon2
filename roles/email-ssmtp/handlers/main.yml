@@ -1,0 +1,13 @@
+---
+- name: Start ssmtp 
+  service: name=ssmtp state=started
+
+- name: Stop ssmtp
+  service: name=ssmtp state=stoped
+
+- name: Reload ssmtp
+  service: name=ssmtp state=reloaded
+
+- name: Restart ssmtp
+  service: name=ssmtp state=restarted
+
