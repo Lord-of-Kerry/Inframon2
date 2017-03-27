@@ -1,95 +1,35 @@
-# {{ ansible_managed }}
+/*
+ * Service apply rules.
+ *
+ * Only applied if host objects are members of
+ * the groups `linux-server` or `windows-server`
+ * and having the `address` resp. `address6`
+ * attribute set.
+ *
+ * The CheckCommand objects `ping4` and `ping6`
+ * are provided by the plugin check command templates.
+ * Check the documentation for details.
+ */
 
-{% for item in groups['services'] %}
-
-object Host "{{ item }}" {
-  import "generic-host"
-  address = "{{ hostvars[item].ansible_ssh_host }}"
-  check_command = "hostalive"
-}
-
-object Service "CPU load" {
+apply Service "ping4" {
   import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check_load"
+
+  check_command = "ping4"
+  vars.sla = "24x7"
+
+  assign where "linux-servers" in host.groups
+  assign where "windows-servers" in host.groups
+  ignore where host.address == ""
 }
 
-object Service "RAM" {
+apply Service "ping6" {
   import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check_ram"
+
+  check_command = "ping6"
+  vars.sla = "24x7"
+
+  assign where "linux-servers" in host.groups
+  assign where "windows-servers" in host.groups
+  ignore where host.address6 == ""
 }
 
-object Service "zombie procs" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check_zombie_procs"
-}
-
-object Service "Total Procs" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check_total_procs"
-}
-
-object Service "Disk" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check_disk"
-}
-
-object Service "Updates" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check_update"
-}
-
-object Service "DNSv4 vs. ipv4.google.com" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check-dns4-client"
-}
-
-object Service "DNSv6 vs. ipv6.google.com" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check-dns6-client"
-}
-
-object Service "HTTPv4 vs. ipv4.google.com" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check-http4-client"
-}
-
-object Service "HTTPv6 vs. ipv6.google.com" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check-http6-client"
-}
-
-object Service "v4 Ping vs. google.de" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check-ping-v4"
-}
-
-object Service "v6 Ping vs. google.de" {
-  import "generic-service"
-  host_name = "{{ item }}"
-  check_command = "nrpe"
-  vars.nrpe_command = "check-ping-v6"
-}
-
-{% endfor %}

@@ -7,3 +7,8 @@ gw03			ansible_ssh_host=176.9.38.150
 gw04			ansible_ssh_host=213.133.111.130
 [satellites]
 icsat01-01		ansible_ssh_host=10.1.160.24
+icsat01-02		ansible_ssh_host=10.1.160.25
+[vip-nodes]
+Speyer-Kurpfalzkaserne  ansible_ssh_host=2a03:2260:1010:2300:219:99ff:fe66:1e6c
+BRK-Schimbach-1         ansible_ssh_host=2a03:2260:1010:1500:f6f2:6dff:fe40:7910
+EHN-EKE-Relais          ansible_ssh_host=2a03:2260:1010:300:219:99ff:fe66:20a5

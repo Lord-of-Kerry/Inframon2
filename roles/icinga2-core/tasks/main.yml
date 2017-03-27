@@ -50,16 +50,44 @@
 
 
 - name: Configure gateways
-  template: "src=gateways.conf.j2 dest='/etc/icinga2/conf.d/hosts/gateways.conf' owner=root group=root"
-
-- name: Configure satellites
-  template: "src=satellites.conf.j2 dest='/etc/icinga2/conf.d/hosts/satellites.conf' owner=root group=root"
-
-- name: Configure services
-  template: "src=services.conf.j2 dest='/etc/icinga2/conf.d/hosts/services.conf' owner=root group=root"
+  template: "src=srv-gateways.conf.j2 dest='/etc/icinga2/conf.d/hosts/srv-gateways.conf' owner=root group=root"
 
 - name: Configure mapserver
-  template: "src=mapserver.conf.j2 dest='/etc/icinga2/conf.d/hosts/mapserver.conf' owner=root group=root"
+  template: "src=srv-mapserver.conf.j2 dest='/etc/icinga2/conf.d/hosts/srv-mapserver.conf' owner=root group=root"
+
+- name: Configure satellites
+  template: "src=srv-satellites.conf.j2 dest='/etc/icinga2/conf.d/hosts/srv-satellites.conf' owner=root group=root"
+
+- name: Configure services
+  template: "src=srv-services.conf.j2 dest='/etc/icinga2/conf.d/hosts/srv-services.conf' owner=root group=root"
+
+- name: Configure VIP Nodes
+  template: "src=vip-nodes.conf.j2 dest='/etc/icinga2/conf.d/hosts/vip-nodes.conf' owner=root group=root"
+
+- name: Configure Commands
+  template: "src=commands.conf.j2 dest='/etc/icinga2/conf.d/commands.conf' owner=root group=root"
+
+- name: Configure Downtimes
+  template: "src=downtimes.conf.j2 dest='/etc/icinga2/conf.d/downtimes.conf' owner=root group=root"
+
+- name: Configure Groups
+  template: "src=groups.conf.j2 dest='/etc/icinga2/conf.d/groups.conf' owner=root group=root"
+
+- name: Configure notifications
+  template: "src=notifications.conf.j2 dest='/etc/icinga2/conf.d/notifications.conf' owner=root group=root"
+
+- name: Configure Services
+  template: "src=services.conf.j2 dest='/etc/icinga2/conf.d/services.conf' owner=root group=root"
+
+- name: Configure Templates
+  template: "src=templates.conf.j2 dest='/etc/icinga2/conf.d/templates.conf' owner=root group=root"
+
+- name: Configure timeperiods
+  template: "src=timeperiods.conf.j2 dest='/etc/icinga2/conf.d/timeperiods.conf' owner=root group=root"
+
+- name: Configure users
+  template: "src=users.conf.j2 dest='/etc/icinga2/conf.d/users.conf' owner=root group=root"
+
 
 #- name: install mysql server
 #  package:
