@@ -3,7 +3,6 @@
 icingaadminpw: 1i1ngaadm1n
 
 icinga_admincontacts:
- - "marcus.schuel@freie-infrastruktur.de"
  - "monitoring@freie-infrastruktur.de"
 
 email_address: monitoring@freie-infrastruktur.de

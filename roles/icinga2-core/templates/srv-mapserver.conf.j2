@@ -6,6 +6,7 @@ object Host "{{ item }}" {
   import "generic-host"
   address = "{{ hostvars[item].ansible_ssh_host }}"
   check_command = "hostalive"
+  vars.sla = "24x7"
 }
 
 object Service "CPU load" {
@@ -13,6 +14,7 @@ object Service "CPU load" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check_load"
+  vars.sla = "24x7"
 }
 
 object Service "RAM" {
@@ -20,6 +22,7 @@ object Service "RAM" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check_ram"
+  vars.sla = "24x7"
 }
 
 object Service "zombie procs" {
@@ -27,6 +30,7 @@ object Service "zombie procs" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check_zombie_procs"
+  vars.sla = "24x7"
 }
 
 object Service "Total Procs" {
@@ -34,6 +38,7 @@ object Service "Total Procs" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check_total_procs"
+  vars.sla = "24x7"
 }
 
 object Service "Disk" {
@@ -41,6 +46,7 @@ object Service "Disk" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check_disk"
+  vars.sla = "24x7"
 }
 
 object Service "Updates" {
@@ -48,6 +54,7 @@ object Service "Updates" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check_update"
+  vars.sla = "24x7"
 }
 
 object Service "DNSv4 vs. ipv4.google.com" {
@@ -55,6 +62,7 @@ object Service "DNSv4 vs. ipv4.google.com" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check-dns4-client"
+  vars.sla = "24x7"
 }
 
 object Service "DNSv6 vs. ipv6.google.com" {
@@ -62,6 +70,7 @@ object Service "DNSv6 vs. ipv6.google.com" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check-dns6-client"
+  vars.sla = "24x7"
 }
 
 object Service "HTTPv4 vs. ipv4.google.com" {
@@ -69,6 +78,7 @@ object Service "HTTPv4 vs. ipv4.google.com" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check-http4-client"
+  vars.sla = "24x7"
 }
 
 object Service "HTTPv6 vs. ipv6.google.com" {
@@ -76,6 +86,7 @@ object Service "HTTPv6 vs. ipv6.google.com" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check-http6-client"
+  vars.sla = "24x7"
 }
 
 object Service "v4 Ping vs. google.de" {
@@ -83,6 +94,7 @@ object Service "v4 Ping vs. google.de" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check-ping-v4"
+  vars.sla = "24x7"
 }
 
 object Service "v6 Ping vs. google.de" {
@@ -90,6 +102,7 @@ object Service "v6 Ping vs. google.de" {
   host_name = "{{ item }}"
   check_command = "nrpe"
   vars.nrpe_command = "check-ping-v6"
+  vars.sla = "24x7"
 }
 
 {% endfor %}
