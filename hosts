@@ -8,6 +8,8 @@ gw04			ansible_ssh_host=213.133.111.130
 [satellites]  #state your debian based machine (e.g. RasPies) with their internal FF IP
 icsat01-03		ansible_ssh_host=10.1.161.27
 icsat01-04		ansible_ssh_host=10.1.167.195
+icsat12-03		ansible_ssh_host=10.58.56.164
+icsat12-04		ansible_ssh_host=10.58.60.228
 [vip-nodes]   #state your nodes, that you would like to be pinged with their IPv6
 Speyer-Kurpfalzkaserne  ansible_ssh_host=2a03:2260:1010:2300:219:99ff:fe66:1e6c
 BRK-Schimbach-1         ansible_ssh_host=2a03:2260:1010:1500:f6f2:6dff:fe40:7910
